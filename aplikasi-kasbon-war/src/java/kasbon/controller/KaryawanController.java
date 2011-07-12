@@ -4,6 +4,8 @@
  */
 package kasbon.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -22,6 +24,10 @@ public class KaryawanController {
     
     private Karyawan karyawan = new Karyawan();
 
+    private List<Karyawan> daftarKaryawan = new ArrayList<Karyawan>();
+    
+    
+    
     public String simpan(){
         aplikasiKasbonService.simpan(karyawan);
         
@@ -30,7 +36,13 @@ public class KaryawanController {
         
         return "form?faces-redirect=true";
     }
-    
+
+    public List<Karyawan> getDaftarKaryawan() {
+        // isi daftar karyawan dari database
+        daftarKaryawan = aplikasiKasbonService.findAllKaryawan();
+        return daftarKaryawan;
+    }
+
     public Karyawan getKaryawan() {
         return karyawan;
     }
