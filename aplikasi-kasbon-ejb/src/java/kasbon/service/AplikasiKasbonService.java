@@ -41,6 +41,11 @@ public class AplikasiKasbonService {
                 .getResultList();
     }
     
+    public Long countAllKaryawan(){
+        return (Long) em.createQuery("select count(k) from Karyawan")
+                .getSingleResult();
+    }
+    
     public List<Karyawan> findKaryawanByNama(String nama){
         return em.createQuery("select k from Karyawan "
                 + "where k.nama like :nama "
