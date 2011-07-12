@@ -45,6 +45,28 @@ public class Pinjaman implements Serializable {
     @Column(name="status_pinjaman", nullable=false)
     private StatusPinjaman statusPinjaman = StatusPinjaman.DISETUJUI;
     
+    @OneToMany(mappedBy="pinjaman", cascade= CascadeType.ALL, orphanRemoval=true)
+    private List<Pencairan> daftarPencairan = new ArrayList<Pencairan>();
+    
+    @OneToMany(mappedBy="pinjaman", cascade= CascadeType.ALL, orphanRemoval=true)
+    private List<Pembayaran> daftarPembayaran = new ArrayList<Pembayaran>();
+
+    public List<Pembayaran> getDaftarPembayaran() {
+        return daftarPembayaran;
+    }
+
+    public void setDaftarPembayaran(List<Pembayaran> daftarPembayaran) {
+        this.daftarPembayaran = daftarPembayaran;
+    }
+
+    public List<Pencairan> getDaftarPencairan() {
+        return daftarPencairan;
+    }
+
+    public void setDaftarPencairan(List<Pencairan> daftarPencairan) {
+        this.daftarPencairan = daftarPencairan;
+    }
+
     public BigDecimal getNilai() {
         return nilai;
     }
