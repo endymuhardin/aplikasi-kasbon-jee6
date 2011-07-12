@@ -34,6 +34,13 @@ public class AplikasiKasbonService {
                 .getResultList();
     }
     
+    public List<Karyawan> findAllKaryawan(Integer start, Integer rows){
+        return em.createQuery("select k from Karyawan order by k.nip")
+                .setFirstResult(start)
+                .setMaxResults(rows)
+                .getResultList();
+    }
+    
     public List<Karyawan> findKaryawanByNama(String nama){
         return em.createQuery("select k from Karyawan "
                 + "where k.nama like :nama "
