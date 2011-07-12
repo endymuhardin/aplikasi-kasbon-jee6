@@ -36,7 +36,7 @@ public class KaryawanController {
         // reset, supaya bisa dipakai insert lagi
         karyawan = new Karyawan();
         
-        return "form?faces-redirect=true";
+        return "list?faces-redirect=true";
     }
     
     public String create(){
