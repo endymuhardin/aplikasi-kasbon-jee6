@@ -8,17 +8,17 @@
     <h:body>
         <h:form>
             <h:panelGrid columns="3">
-                <h:outputLabel for="nip"/>
-                <h:inputText id="nip" required="true" requiredMessage="harus diisi"></h:inputText>
+                <h:outputLabel for="nip" value="NIP"/>
+                <h:inputText id="nip" value="#{karyawanController.karyawan.nip}" required="true" requiredMessage="harus diisi"></h:inputText>
                 <h:message for="nip"/>
                 
-                <h:outputLabel for="nama"/>
-                <h:inputText id="nama" required="true" requiredMessage="harus diisi"></h:inputText>
+                <h:outputLabel for="nama" value="Nama"/>
+                <h:inputText id="nama" value="#{karyawanController.karyawan.nama}" required="true" requiredMessage="harus diisi"></h:inputText>
                 <h:message for="nama"/>
                 
                 <h:outputText value=""/>
                 <h:panelGroup>
-                    <h:commandButton value="Simpan"/>
+                    <h:commandButton value="Simpan" action="#{karyawanController.simpan}"/>
                     <h:commandButton value="Batal" type="reset"/>
                 </h:panelGroup>
             </h:panelGrid>
