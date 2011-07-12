@@ -22,7 +22,11 @@ public class AplikasiKasbonService {
     private EntityManager em;
     
     public void simpan(Karyawan karyawan) {
-        em.persist(karyawan);
+        if(karyawan.getId() == null){
+            em.persist(karyawan);
+        } else {
+            em.merge(karyawan);
+        }
     }
 
     public Karyawan findKaryawanById(Long id){
