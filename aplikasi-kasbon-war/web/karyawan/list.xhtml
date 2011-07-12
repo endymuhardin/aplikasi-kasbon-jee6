@@ -9,21 +9,30 @@
     <h:body>
         <h1>Daftar Karyawan</h1>
         
-        
-        <h:dataTable var="kar" value="#{karyawanController.daftarKaryawan}">
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="NIP"/>
-                </f:facet>
-                <h:outputText value="#{kar.nip}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Nama"/>
-                </f:facet>
-                <h:outputText value="#{kar.nama}"/>
-            </h:column>
-        </h:dataTable>
+            
+        <h:form>
+            <h:commandButton value="Add New"></h:commandButton>
+            <h:dataTable var="kar" value="#{karyawanController.daftarKaryawan}">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="NIP"/>
+                    </f:facet>
+                    <h:outputText value="#{kar.nip}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nama"/>
+                    </f:facet>
+                    <h:outputText value="#{kar.nama}"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="edit"></h:commandButton>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="delete"></h:commandButton>
+                </h:column>
+            </h:dataTable>
+        </h:form>
         
     </h:body>
 </html>
