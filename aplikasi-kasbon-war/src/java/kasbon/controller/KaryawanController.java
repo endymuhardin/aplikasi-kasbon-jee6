@@ -39,6 +39,11 @@ public class KaryawanController {
         return "form?faces-redirect=true";
     }
     
+    public String create(){
+        karyawan = new Karyawan();
+        return "form?faces-redirect=true";
+    }
+    
     public String edit(){
         karyawan = listDataModelKaryawan.getRowData();
         return "form?faces-redirect=true";

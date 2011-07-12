@@ -11,7 +11,7 @@
         
             
         <h:form>
-            <h:commandButton value="Add New"></h:commandButton>
+            <h:commandButton value="Add New" action="#{karyawanController.create}"></h:commandButton>
             <h:dataTable var="kar" value="#{karyawanController.listDataModelKaryawan}">
                 <h:column>
                     <f:facet name="header">
