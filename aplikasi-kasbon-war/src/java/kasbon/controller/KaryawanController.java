@@ -9,6 +9,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import kasbon.entity.Karyawan;
 import kasbon.service.AplikasiKasbonService;
 
@@ -25,7 +27,7 @@ public class KaryawanController {
     private Karyawan karyawan = new Karyawan();
 
     private List<Karyawan> daftarKaryawan = new ArrayList<Karyawan>();
-    
+    private DataModel<Karyawan> listDataModelKaryawan;
     
     
     public String simpan(){
@@ -43,6 +45,11 @@ public class KaryawanController {
         return daftarKaryawan;
     }
 
+    public DataModel<Karyawan> getListDataModelKaryawan() {
+        listDataModelKaryawan = new ListDataModel<Karyawan>(getDaftarKaryawan());
+        return listDataModelKaryawan;
+    }
+    
     public Karyawan getKaryawan() {
         return karyawan;
     }
