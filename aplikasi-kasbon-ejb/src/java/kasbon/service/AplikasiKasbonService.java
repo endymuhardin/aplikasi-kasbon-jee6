@@ -30,24 +30,24 @@ public class AplikasiKasbonService {
     }
     
     public List<Karyawan> findAllKaryawan(){
-        return em.createQuery("select k from Karyawan order by k.nip")
+        return em.createQuery("select k from Karyawan k order by k.nip")
                 .getResultList();
     }
     
     public List<Karyawan> findAllKaryawan(Integer start, Integer rows){
-        return em.createQuery("select k from Karyawan order by k.nip")
+        return em.createQuery("select k from Karyawan k order by k.nip")
                 .setFirstResult(start)
                 .setMaxResults(rows)
                 .getResultList();
     }
     
     public Long countAllKaryawan(){
-        return (Long) em.createQuery("select count(k) from Karyawan")
+        return (Long) em.createQuery("select count(k) from Karyawan k ")
                 .getSingleResult();
     }
     
     public List<Karyawan> findKaryawanByNama(String nama){
-        return em.createQuery("select k from Karyawan "
+        return em.createQuery("select k from Karyawan k "
                 + "where k.nama like :nama "
                 + "order by k.nip")
                 .setParameter("nama", "%"+nama+"%")
