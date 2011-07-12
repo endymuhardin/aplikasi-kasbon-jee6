@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import kasbon.entity.Karyawan;
@@ -19,7 +19,7 @@ import kasbon.service.AplikasiKasbonService;
  * @author endy
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class KaryawanController {
     @EJB
     private AplikasiKasbonService aplikasiKasbonService;
@@ -36,6 +36,11 @@ public class KaryawanController {
         // reset, supaya bisa dipakai insert lagi
         karyawan = new Karyawan();
         
+        return "form?faces-redirect=true";
+    }
+    
+    public String edit(){
+        karyawan = listDataModelKaryawan.getRowData();
         return "form?faces-redirect=true";
     }
 
