@@ -19,8 +19,7 @@
                                             value="#{pengajuanController.pengajuan.pemohon}">
                             <f:selectItems value="#{pengajuanController.daftarKaryawan}" 
                                            var="kar"
-                                           itemLabel="#{kar.nama}"
-                                           itemValue="#{kar.id}"></f:selectItems>
+                                           itemLabel="#{kar.nama}"></f:selectItems>
                         </h:selectOneListbox>
                         <h:message for="karyawan"/>
 
@@ -30,7 +29,7 @@
 
                         <h:outputText value=""/>
                         <h:panelGroup>
-                            <h:commandButton value="Simpan"/>
+                            <h:commandButton value="Simpan" action="#{pengajuanController.simpan}"/>
                             <h:commandButton value="Batal" type="reset"/>
                         </h:panelGroup>
                     </h:panelGrid>
