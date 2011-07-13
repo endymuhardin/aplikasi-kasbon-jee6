@@ -10,6 +10,7 @@ import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import kasbon.entity.Karyawan;
+import kasbon.entity.Pengajuan;
 
 /**
  *
@@ -56,5 +57,13 @@ public class AplikasiKasbonService {
                 + "order by k.nip")
                 .setParameter("nama", "%"+nama+"%")
                 .getResultList();
+    }
+
+    public void simpan(Pengajuan pengajuan) {
+        if(pengajuan.getId() == null){
+            em.persist(pengajuan);
+        } else {
+            em.merge(pengajuan);
+        }
     }
 }

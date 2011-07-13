@@ -33,10 +33,8 @@ public class PengajuanController {
     }
     
     public String simpan(){
-        System.out.println("Karyawan yang dipilih : "
-                +pengajuan.getPemohon().getNip()
-                +" mengajukan Rp. "
-                +pengajuan.getNilaiPinjaman());
+        aplikasiKasbonService.simpan(pengajuan);
+        pengajuan = new Pengajuan();
         return "form?faces-redirect=true";
     }
 
