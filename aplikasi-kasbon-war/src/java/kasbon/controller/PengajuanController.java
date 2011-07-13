@@ -4,6 +4,7 @@
  */
 package kasbon.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -23,6 +24,7 @@ public class PengajuanController {
     private AplikasiKasbonService aplikasiKasbonService;
 
     private List<Karyawan> daftarKaryawan;
+    private List<Pengajuan> daftarPengajuan;
     private Pengajuan pengajuan = new Pengajuan();
 
     public List<Karyawan> getDaftarKaryawan() {
@@ -36,6 +38,13 @@ public class PengajuanController {
         aplikasiKasbonService.simpan(pengajuan);
         pengajuan = new Pengajuan();
         return "form?faces-redirect=true";
+    }
+
+    public List<Pengajuan> getDaftarPengajuan() {
+        if(daftarPengajuan == null){
+            daftarPengajuan = new ArrayList<Pengajuan>();
+        }
+        return daftarPengajuan;
     }
 
     public Pengajuan getPengajuan() {

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <head>
+        <title>Rekap Pengajuan</title>
+    </head>
+    <body>
+        <ui:composition template="../templates/utama.xhtml">
+
+            <ui:define name="screen">
+                <h1>Rekap Pengajuan</h1>
+
+
+                <h:form>
+                    <h:commandButton value="Add New" action="form"></h:commandButton>
+                    <p:dataTable var="p" 
+                                 value="#{pengajuanController.daftarPengajuan}"
+                                 paginator="true" rows="10"  
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                 rowsPerPageTemplate="5,10,15"
+                                 >
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Tanggal"/>
+                            </f:facet>
+                            <h:outputText value="#{p.waktuPengajuan}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Pemohon"/>
+                            </f:facet>
+                            <h:outputText value="#{p.pemohon.nama}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nilai"/>
+                            </f:facet>
+                            <h:outputText value="#{p.nilaiPinjaman}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Status"/>
+                            </f:facet>
+                            <h:outputText value="#{p.statusPengajuan}"/>
+                        </p:column>
+                        <p:column>
+                            <h:panelGroup>
+                                <h:commandButton value="setuju"></h:commandButton>
+                                <h:commandButton value="tolak"></h:commandButton>
+                            </h:panelGroup>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
+
