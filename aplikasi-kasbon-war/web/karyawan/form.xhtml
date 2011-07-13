@@ -1,30 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <title>Entri Karyawan</title>
     </h:head>
     <h:body>
-        
-        <h1>Entri Karyawan</h1>
-        <h:form>
-            <h:panelGrid columns="3">
-                <h:outputLabel for="nip" value="NIP"/>
-                <h:inputText id="nip" value="#{karyawanController.karyawan.nip}" required="true" requiredMessage="harus diisi"></h:inputText>
-                <h:message for="nip"/>
-                
-                <h:outputLabel for="nama" value="Nama"/>
-                <h:inputText id="nama" value="#{karyawanController.karyawan.nama}" required="true" requiredMessage="harus diisi"></h:inputText>
-                <h:message for="nama"/>
-                
-                <h:outputText value=""/>
-                <h:panelGroup>
-                    <h:commandButton value="Simpan" action="#{karyawanController.simpan}"/>
-                    <h:commandButton value="Batal" type="reset"/>
-                </h:panelGroup>
-            </h:panelGrid>
-        </h:form>
+        <ui:composition template="../templates/utama.xhtml">
+
+            <ui:define name="screen">
+                <h1>Entri Karyawan</h1>
+                <h:form>
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="nip" value="NIP"/>
+                        <h:inputText id="nip" value="#{karyawanController.karyawan.nip}" required="true" requiredMessage="harus diisi"></h:inputText>
+                        <h:message for="nip"/>
+
+                        <h:outputLabel for="nama" value="Nama"/>
+                        <h:inputText id="nama" value="#{karyawanController.karyawan.nama}" required="true" requiredMessage="harus diisi"></h:inputText>
+                        <h:message for="nama"/>
+
+                        <h:outputText value=""/>
+                        <h:panelGroup>
+                            <h:commandButton value="Simpan" action="#{karyawanController.simpan}"/>
+                            <h:commandButton value="Batal" type="reset"/>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

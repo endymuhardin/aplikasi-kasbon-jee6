@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+
+    <h:head>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        
+        <h:form>
+
+            <p:growl id="messages"/>
+
+            <p:menubar autoSubmenuDisplay="true">
+                <p:submenu label="Master Data" icon="ui-icon ui-icon-document">
+                    <p:submenu label="Karyawan" icon="ui-icon ui-icon-document">
+                        <p:menuitem value="Entri Karyawan Baru" action="karyawan/form"/>
+                        <p:menuitem value="Daftar Karyawan" action="karyawan/list" />
+                    </p:submenu>
+                </p:submenu>
+                <p:submenu label="Transaksi" icon="ui-icon ui-icon-document">
+                    <p:submenu label="Pengajuan" icon="ui-icon ui-icon-document">
+                        <p:menuitem value="Entri Pengajuan" url="#" />
+                        <p:menuitem value="Rekap Pengajuan" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Persetujuan" icon="ui-icon ui-icon-document">
+                        <p:menuitem value="Entri Persetujuan" url="#" />
+                        <p:menuitem value="Rekap Persetujuan" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Pencairan" icon="ui-icon ui-icon-document">
+                        <p:menuitem value="Entri Pencairan" url="#" />
+                        <p:menuitem value="Rekap Pencairan" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Pembayaran" icon="ui-icon ui-icon-document">
+                        <p:menuitem value="Entri Pembayaran" url="#" />
+                        <p:menuitem value="Rekap Pembayaran" url="#" />
+                    </p:submenu>
+                </p:submenu>
+                <p:submenu label="Laporan" icon="ui-icon ui-icon-document">
+                    <p:menuitem value="Mutasi Hutang" url="#" />
+                </p:submenu>
+            </p:menubar>
+
+        </h:form>
+
+
+        <ui:insert name="screen"></ui:insert>
+        
+    </h:body>
+
+</html>
