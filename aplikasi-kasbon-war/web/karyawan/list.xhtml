@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
     <h:head>
         <title>Daftar Karyawan</title>
     </h:head>
@@ -12,26 +13,31 @@
             
         <h:form>
             <h:commandButton value="Add New" action="#{karyawanController.create}"></h:commandButton>
-            <h:dataTable var="kar" value="#{karyawanController.listDataModelKaryawan}">
-                <h:column>
+            <p:dataTable var="kar" 
+                         value="#{karyawanController.listDataModelKaryawan}"
+                         paginator="true" rows="10"  
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                         rowsPerPageTemplate="5,10,15"
+                 >
+                <p:column sortBy="#{kar.nip}">
                     <f:facet name="header">
                         <h:outputText value="NIP"/>
                     </f:facet>
                     <h:outputText value="#{kar.nip}"/>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column sortBy="#{kar.nama}">
                     <f:facet name="header">
                         <h:outputText value="Nama"/>
                     </f:facet>
                     <h:outputText value="#{kar.nama}"/>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column>
                     <h:commandButton value="edit" action="#{karyawanController.edit}"></h:commandButton>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column>
                     <h:commandButton value="delete"></h:commandButton>
-                </h:column>
-            </h:dataTable>
+                </p:column>
+            </p:dataTable>
         </h:form>
         
     </h:body>

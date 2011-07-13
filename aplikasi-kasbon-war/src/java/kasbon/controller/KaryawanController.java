@@ -4,7 +4,6 @@
  */
 package kasbon.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -26,7 +25,7 @@ public class KaryawanController {
     
     private Karyawan karyawan = new Karyawan();
 
-    private List<Karyawan> daftarKaryawan = new ArrayList<Karyawan>();
+    private List<Karyawan> daftarKaryawan;
     private DataModel<Karyawan> listDataModelKaryawan;
     
     
@@ -36,6 +35,8 @@ public class KaryawanController {
         // reset, supaya bisa dipakai insert lagi
         karyawan = new Karyawan();
         
+        // query ulang dari database
+        refreshListKaryawan();
         return "list?faces-redirect=true";
     }
     
@@ -48,16 +49,25 @@ public class KaryawanController {
         karyawan = listDataModelKaryawan.getRowData();
         return "form?faces-redirect=true";
     }
-
+    
     public List<Karyawan> getDaftarKaryawan() {
-        // isi daftar karyawan dari database
-        daftarKaryawan = aplikasiKasbonService.findAllKaryawan();
+        if(daftarKaryawan == null) {
+            // isi daftar karyawan dari database
+            daftarKaryawan = aplikasiKasbonService.findAllKaryawan();
+        }
         return daftarKaryawan;
     }
 
     public DataModel<Karyawan> getListDataModelKaryawan() {
-        listDataModelKaryawan = new ListDataModel<Karyawan>(getDaftarKaryawan());
+        if(listDataModelKaryawan == null) {
+            listDataModelKaryawan = new ListDataModel<Karyawan>(getDaftarKaryawan());
+        }
         return listDataModelKaryawan;
+    }
+    
+    private void refreshListKaryawan(){
+        daftarKaryawan = aplikasiKasbonService.findAllKaryawan();
+        listDataModelKaryawan = new ListDataModel<Karyawan>(getDaftarKaryawan());
     }
     
     public Karyawan getKaryawan() {
