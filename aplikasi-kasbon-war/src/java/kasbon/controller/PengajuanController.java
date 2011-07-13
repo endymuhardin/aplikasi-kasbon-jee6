@@ -4,10 +4,11 @@
  */
 package kasbon.controller;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import kasbon.entity.Karyawan;
 import kasbon.entity.Pengajuan;
 import kasbon.service.AplikasiKasbonService;
@@ -17,7 +18,7 @@ import kasbon.service.AplikasiKasbonService;
  * @author endy
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class PengajuanController {
     @EJB
     private AplikasiKasbonService aplikasiKasbonService;
@@ -25,12 +26,24 @@ public class PengajuanController {
     private List<Karyawan> daftarKaryawan;
     private List<Pengajuan> daftarPengajuan;
     private Pengajuan pengajuan = new Pengajuan();
+    private Date mulai;
+    private Date sampai;
 
     public List<Karyawan> getDaftarKaryawan() {
         if(daftarKaryawan == null){
             daftarKaryawan = aplikasiKasbonService.findAllKaryawan();
         }
         return daftarKaryawan;
+    }
+    
+    public String cari(){
+        if(mulai != null && sampai != null){
+            daftarPengajuan = aplikasiKasbonService.findAllPengajuan(mulai, sampai);
+        } else {
+            daftarPengajuan = aplikasiKasbonService.findAllPengajuan();
+        }
+        
+        return "list?faces-redirect=true";
     }
     
     public String simpan(){
@@ -52,6 +65,22 @@ public class PengajuanController {
 
     public void setPengajuan(Pengajuan pengajuan) {
         this.pengajuan = pengajuan;
+    }
+
+    public Date getMulai() {
+        return mulai;
+    }
+
+    public void setMulai(Date mulai) {
+        this.mulai = mulai;
+    }
+
+    public Date getSampai() {
+        return sampai;
+    }
+
+    public void setSampai(Date sampai) {
+        this.sampai = sampai;
     }
     
     /** Creates a new instance of PengajuanController */

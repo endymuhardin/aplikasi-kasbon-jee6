@@ -14,9 +14,16 @@
             <ui:define name="screen">
                 <h1>Rekap Pengajuan</h1>
 
+                
 
                 <h:form>
-                    <h:commandButton value="Add New" action="form"></h:commandButton>
+                    
+                    Periode : 
+                    <p:calendar id="mulai" value="#{pengajuanController.mulai}"/>
+                    sampai 
+                    <p:calendar id="sampai" value="#{pengajuanController.sampai}"/>
+                    <h:commandButton value="Cari" action="#{pengajuanController.cari}"/>
+                    
                     <p:dataTable var="p" 
                                  value="#{pengajuanController.daftarPengajuan}"
                                  paginator="true" rows="10"  

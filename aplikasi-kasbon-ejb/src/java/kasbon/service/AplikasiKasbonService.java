@@ -4,6 +4,7 @@
  */
 package kasbon.service;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
@@ -70,6 +71,15 @@ public class AplikasiKasbonService {
     public List<Pengajuan> findAllPengajuan() {
         return em.createQuery("select p from Pengajuan p "
                 + "order by p.waktuPengajuan")
+                .getResultList();
+    }
+
+    public List<Pengajuan> findAllPengajuan(Date mulai, Date sampai) {
+        return em.createQuery("select p from Pengajuan p "
+                + " where p.waktuPengajuan between :mulai and :sampai "
+                + " order by p.waktuPengajuan")
+                .setParameter("mulai", mulai)
+                .setParameter("sampai", sampai)
                 .getResultList();
     }
 }
