@@ -15,7 +15,8 @@
                 <h:form>
                     <h:panelGrid columns="3">
                         <h:outputLabel for="karyawan" value="Pemohon"/>
-                        <h:selectOneListbox size="1">
+                        <h:selectOneListbox id="karyawan" size="1" 
+                                            value="#{pengajuanController.pengajuan.pemohon}">
                             <f:selectItems value="#{pengajuanController.daftarKaryawan}" 
                                            var="kar"
                                            itemLabel="#{kar.nama}"
@@ -24,7 +25,7 @@
                         <h:message for="karyawan"/>
 
                         <h:outputLabel for="nilai" value="Nilai Pinjaman"/>
-                        <h:inputText id="nilai" value=""></h:inputText>
+                        <h:inputText id="nilai" value="#{pengajuanController.pengajuan.nilaiPinjaman}"></h:inputText>
                         <h:message for="nilai"/>
 
                         <h:outputText value=""/>
