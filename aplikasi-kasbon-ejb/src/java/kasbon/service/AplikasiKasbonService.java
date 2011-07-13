@@ -66,4 +66,10 @@ public class AplikasiKasbonService {
             em.merge(pengajuan);
         }
     }
+
+    public List<Pengajuan> findAllPengajuan() {
+        return em.createQuery("select p from Pengajuan p "
+                + "order by p.waktuPengajuan")
+                .getResultList();
+    }
 }

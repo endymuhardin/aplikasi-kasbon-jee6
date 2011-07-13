@@ -4,7 +4,6 @@
  */
 package kasbon.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -42,7 +41,7 @@ public class PengajuanController {
 
     public List<Pengajuan> getDaftarPengajuan() {
         if(daftarPengajuan == null){
-            daftarPengajuan = new ArrayList<Pengajuan>();
+            daftarPengajuan = aplikasiKasbonService.findAllPengajuan();
         }
         return daftarPengajuan;
     }
