@@ -34,7 +34,7 @@ public class Pengajuan implements Serializable {
     @JoinColumn(name="id_pemohon", nullable=false)
     private Karyawan pemohon;
     
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="waktu_pengajuan", nullable=false)
     private Date waktuPengajuan = new Date();
     
